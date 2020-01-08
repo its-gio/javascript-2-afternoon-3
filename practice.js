@@ -27,7 +27,10 @@
   Then invoke the callback function, passing in the first element in the array as it's argument.
 */
 
-// Code Here 
+// Code Here
+function first(arr, funk) {
+  return funk(arr[0]);
+}
 
 // Do not edit the code below.
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
@@ -48,6 +51,9 @@ first(names, function(firstName){
 */
 
 //Code Here
+function last(arr, funk) {
+  return funk(arr[arr.length - 1]);
+}
 
 // Do not edit the code below.
 last(names, function(lastName){
@@ -66,6 +72,9 @@ last(names, function(lastName){
 */
 
 //Code Here
+function multiply(num1, num2, funk) {
+  return funk(num1*num2);
+}
 
 // Do not edit the code below.
 multiply(4, 3, function(answer){
@@ -84,7 +93,11 @@ multiply(4, 3, function(answer){
   If the name does not exist, invoke the callback with false as the argument.
 */
 
-//Code Here 
+//Code Here
+function contains(arr, name, funk) {
+  let temp = arr.find(person =>  person === name);
+  return temp !== undefined ? funk(true) : funk(false);
+}
 
 // Do not edit the code below.
 contains(names, 'Colt', function(result){
@@ -106,7 +119,21 @@ contains(names, 'Colt', function(result){
 */
 
 //Code Here
+function uniq(arr, funk) {
+  let temp = arr.reduce((acc, curr, i) => {
+    if (acc.length == 0) {
+      acc.push(curr);
+    } else if(acc.find((name) => name === curr)) {
+      acc;
+    } else {
+      acc.push(curr);
+    }
 
+    return acc;
+  }, []);
+
+  funk(temp);
+}
 // Do not edit the code below.
 uniq(names, function(uniqArr){
   console.log('The new names array with all the duplicate items removed is ', uniqArr);
@@ -122,7 +149,12 @@ uniq(names, function(uniqArr){
   For each name in the array, invoke the callback and pass in the name and the name's index as arguments.
 */
 
-//Code Here 
+//Code Here
+function each(arr, funk) {
+  arr.forEach((name,i) => {
+    funk(name, i)
+  });
+} 
 
 // Do not edit the code below.
 each(names, function(item, indice){
@@ -140,6 +172,13 @@ each(names, function(item, indice){
 */
 
 // Code here
+function getUserById(users, id, funk) {
+  return users.forEach((user) => {
+    if (user.id === id) {
+      funk(user);
+    }
+  })
+}
 
 // Do not edit the code below.
 var users = [
