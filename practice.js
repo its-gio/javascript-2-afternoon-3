@@ -134,6 +134,19 @@ function uniq(arr, funk) {
 
   funk(temp);
 }
+
+// function uniq(names, funk) {
+//   let temp = [];
+
+//   names.forEach(name => {
+//     if (!temp.includes(name)) {
+//       temp.push(name);
+//     }
+//   })
+  
+//   funk(temp);
+// }
+
 // Do not edit the code below.
 uniq(names, function(uniqArr){
   console.log('The new names array with all the duplicate items removed is ', uniqArr);
